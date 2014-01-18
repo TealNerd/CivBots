@@ -1,36 +1,46 @@
+// Created by TealNerd and Dydomite
+// For use with rectangular carrot farms
+// Set up with a hopper string at the Z1 end of the farm
+// Replace Z1 with one end of your farm
+// Z2 should be the middle
+// Z3 is the end opposite Z1
+// X1 should be the furthest X coordinate toward 0,0 if x is negative, or furthest from 0,0 if x is positive
+// X2 shuold be the starting X coordinate for your farm
+// Hotbar should be configured with a fortune 3 diamond pick and a stick in slots 1 and 9
+
 TOGGLEKEY(forward)
 
 DO;
-If(ZPOS = -4907)
+If(ZPOS = Z1) //Begin harvesting crops
 LOOK(180,90) 
 PICK(278)
 SPRINT
 do; 
 key(attack) 
-UNTIL(ZPOS = -4789)
+UNTIL(ZPOS = Z2) // Stop harvesting to refresh crops 
 Endif;
 
 
-If(ZPOS = -4789)
+If(ZPOS = Z2)  // Refresh crop script
 TOGGLEKEY(forward)
 PICK(332)
 LOOK(180,40)
 WAIT(100ms)
 key(use)
 WAIT(100ms)
-TOGGLEKEY(forward)
+TOGGLEKEY(forward)  // begin harvesting again
 SPRINT
 LOOK(180,90) 
 PICK(278)
 do;
 key(attack)
-UNTIL(ZPOS = -4708)
+UNTIL(ZPOS = Z3)
 Endif;
 
 
 
 
-If(ZPOS = -4708) 
+If(ZPOS = -4708) // begin replanting
 SPRINT
 LOOK(0,90) 
 PICK(391)
@@ -38,7 +48,7 @@ INC(@#mycounter)
 LOG(%@#mycounter%)
 do; 
 key(use) 
-UNTIL(ZPOS = -4907) 
+UNTIL(ZPOS = Z1) // drop harvested carrots into hoppers
 LOOK(0,45)
 SLOT(2)
 do(64);
@@ -70,7 +80,7 @@ key(drop)
 loop;
 ENDIF;
 
-If(ZPOS = -4907)
+If(ZPOS = -4907) // move to next row
 LOOK(90,90) 
 do;
 key(forward)
@@ -78,13 +88,13 @@ UNTIL(XPOS = %@#mycounter%)
 ENDIF;
 
 
-If(XPOS = -6456)
+If(XPOS = X1)  // return to the begining of the farm
 DEC(@#mycounter, 18)
 LOOK(270,0)
 do;
 key(forward)
 SPRINT
-UNTIL(XPOS = -6474)
+UNTIL(XPOS = X1)
 ENDIF;
 
 
