@@ -1,0 +1,91 @@
+TOGGLEKEY(forward)
+
+DO;
+If(ZPOS = -4907)
+LOOK(180,90) 
+PICK(278)
+SPRINT
+do; 
+key(attack) 
+UNTIL(ZPOS = -4789)
+Endif;
+
+
+If(ZPOS = -4789)
+TOGGLEKEY(forward)
+PICK(332)
+LOOK(180,40)
+WAIT(100ms)
+key(use)
+WAIT(100ms)
+TOGGLEKEY(forward)
+SPRINT
+LOOK(180,90) 
+PICK(278)
+do;
+key(attack)
+UNTIL(ZPOS = -4708)
+Endif;
+
+
+
+
+If(ZPOS = -4708) 
+SPRINT
+LOOK(0,90) 
+PICK(391)
+INC(@#mycounter) 
+LOG(%@#mycounter%)
+do; 
+key(use) 
+UNTIL(ZPOS = -4907) 
+LOOK(0,45)
+SLOT(2)
+do(64);
+key(drop)
+loop;
+SLOT(3)
+do(64);
+key(drop)
+loop;
+SLOT(4)
+do(64);
+key(drop)
+loop;
+SLOT(5)
+do(64);
+key(drop)
+loop;
+SLOT(6)
+do(64);
+key(drop)
+loop;
+SLOT(7)
+do(64);
+key(drop)
+loop;
+SLOT(8)
+do(32);
+key(drop)
+loop;
+ENDIF;
+
+If(ZPOS = -4907)
+LOOK(90,90) 
+do;
+key(forward)
+UNTIL(XPOS = %@#mycounter%)
+ENDIF;
+
+
+If(XPOS = -6456)
+DEC(@#mycounter, 18)
+LOOK(270,0)
+do;
+key(forward)
+SPRINT
+UNTIL(XPOS = -6474)
+ENDIF;
+
+
+LOOP;
