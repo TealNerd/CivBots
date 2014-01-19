@@ -1,16 +1,11 @@
-// Script by TealNerd and dydomite
-
-//initial obby machine activator
 Pick(287)
 wait(100ms)
 key(drop)
 
 DO;
-//places string on hopper
 Pick(287)
 Key(use)
 wait(50ms)
-//mines obbt
 Pick(278)
 Wait(110t)
 do(38);
