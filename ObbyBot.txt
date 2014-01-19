@@ -11,6 +11,7 @@ Key(drop)
 DO;
 Pick(287)
 Key(use)
+wait(50ms)
 Pick(278)
 Wait(5)
 do(200);
