@@ -4,12 +4,12 @@ ToggleKey(sneak)
 
 Wait(500ms)
 
-Pick(string)
+Pick(287)
 Key(use)
-Key(attack
+Key(attack)
 
 DO;
-Pick(string)
+Pick(287)
 Key(use)
 Pick(278)
 Wait(500ms)
