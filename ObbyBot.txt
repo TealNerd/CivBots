@@ -1,20 +1,20 @@
 Diclaimer: This bot is testing stages
 
+
 ToggleKey(sneak)
 
 Wait(500ms)
 
-Pick(287)
-Key(use)
-Key(attack)
+Pick(280)
+Key(drop)
 
 DO;
 Pick(287)
 Key(use)
 Pick(278)
-Wait(500ms)
-Togglekey(attack)
-wait(1000ms)
-togglekey(attack)
-LOOP;
-    
+Wait(5)
+do(200);
+key(attack)
+loop;
+wait(200ms)
+LOOP;    
