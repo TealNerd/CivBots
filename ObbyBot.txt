@@ -1,20 +1,19 @@
-Diclaimer: This bot is testing stages
+// Script by TealNerd and dydomite
 
-
-ToggleKey(sneak)
-
-Wait(500ms)
-
-Pick(280)
-Key(drop)
+//initial obby machine activator
+Pick(287)
+wait(100ms)
+key(drop)
 
 DO;
+//places string on hopper
 Pick(287)
 Key(use)
 wait(50ms)
+//mines obbt
 Pick(278)
-Wait(5)
-do(200);
+Wait(110t)
+do(38);
 key(attack)
 loop;
 wait(200ms)
