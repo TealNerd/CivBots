@@ -13,7 +13,7 @@ TOGGLEKEY(forward)
 DO;
 If(ZPOS = Z1) //Begin harvesting crops
 LOOK(180,90) 
-PICK(278)
+PICK(diamond_pickaxe)
 SPRINT
 do; 
 key(attack) 
@@ -23,7 +23,7 @@ Endif;
 
 If(ZPOS = Z2)  // Refresh crop script
 TOGGLEKEY(forward)
-PICK(332)
+PICK(stick)
 LOOK(180,40)
 WAIT(100ms)
 key(use)
@@ -31,7 +31,7 @@ WAIT(100ms)
 TOGGLEKEY(forward)  // begin harvesting again
 SPRINT
 LOOK(180,90) 
-PICK(278)
+PICK(diamond_pickaxe)
 do;
 key(attack)
 UNTIL(ZPOS = Z3)
@@ -43,7 +43,7 @@ Endif;
 If(ZPOS = -4708) // begin replanting
 SPRINT
 LOOK(0,90) 
-PICK(391)
+PICK(carrot)
 INC(@#mycounter) 
 LOG(%@#mycounter%)
 do; 
