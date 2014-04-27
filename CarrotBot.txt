@@ -39,5 +39,5 @@ DO
 LOOK(180,0)
 UNTIL(XPOS=?) //Set ? to the hopper end of the farm
 TOGGLEKEY(FORWARD)
-WAIT(144000t)
+WAIT(?t) //Replace ? with time to wait for crops to grow (hours*72000)
 LOOP
