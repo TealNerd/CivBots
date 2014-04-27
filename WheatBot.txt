@@ -4,6 +4,9 @@
 //For use in a separate farm, simply set up a farm exactly like the one in Haven, change the coordinates relative to your farm and use!
 //Enjoy your wheat!
 
+//Configure inventory with baked potatoes and a stick on your hotbar, the rest of your inv should be cleared out
+
+
 LOG(&3NOW BOTTING WHEAT!)
 
 DO
