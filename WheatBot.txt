@@ -1,0 +1,34 @@
+TOGGLEKEY(forward)
+
+DO(25);
+// Replace the number in the DO brackets with how many rows you want it to do
+If(ZPOS = -4650) 
+// This is the starting position. You can switch it to an X coordinate so you go up and down on X instead of Z
+LOOK(0,90) 
+// When you edit the script you need to make sure you edit the second number. 0 = north. Here the LOOK points you north.
+PICK(stick) 
+// Can be anything just to avoid thousands of (X HOURS TILL GROWTH) messages. Is stick here
+do; 
+key(attack) 
+UNTIL(ZPOS = -4699) 
+// Switch to End of row coordinate
+Endif;
+
+
+If(ZPOS = -4699) 
+// Switch to end of row coordinate
+LOOK(180,90) 
+// Again, have to compensate for direction
+PICK(wheat_seeds) 
+// This one picks wheat seeds. Change ID for crop of choice
+do; 
+key(use) 
+UNTIL(ZPOS = -4650) 
+// Switch to row beginning coordinate
+LOOK(90,90) 
+// Again compensate for direction. This LOOK will move you to the next row
+Endif;
+
+WAIT(150ms)
+LOOP;
+TOGGLEKEY(FORWARD);
