@@ -32,7 +32,7 @@ WAIT(4t)
 LOOP
 DO
 LOOK(180,0)
-UNTIL(XPOS=-6448)
+UNTIL(XPOS=?)
 TOGGLEKEY(FORWARD)
-WAIT(144000t)
+WAIT(?t) //Replace ? with time to let the crops grow (hours * 72000)
 LOOP
