@@ -1,7 +1,7 @@
 DO(3)
 DO(576)
 
-PICK(351:15)
+PICK(dye:15)
 
 wait(10ms)
 
@@ -19,7 +19,7 @@ LOOP
 
 DO(576)
 
-PICK(351:15)
+PICK(dye:15)
 
 wait(10ms)
 
