@@ -1,22 +1,15 @@
-//Use with rectangular wart farm
-
-//Set up farm with hoppers at one x end in a row leading to a chest
-
-//Configure inventory with a fortune 3 diamond pick in slot one and a stack of warts in slot 9 (for a buffer)
-
-//Make rows no longer than 150 blocks
-
-
-
-SET(#rows,?) //set ? to the number of rows of your farm (including empty rows if you have any)
-SET(#z,ZPOS)
-
+//Make your farm exactly like the schematic
+//Inventory should be a fort 3 pickaxe in slot one, and baked potatoes and a stick in slots 2 and 3 as well as a stack of warts in slot 9
+//
 DO
 
+SET(#rows,34)
+SET(#counter,%ZPOS%)
+SET(#z,%ZPOS%)
+SET(#x,%XPOS%)
+
 TOGGLEKEY(FORWARD)
-
 DO(%#rows%)
-
 
 DO
 
@@ -26,8 +19,7 @@ LOOK(90,90)
 
 KEY(ATTACK)
 
-UNTIL(XPOS=?) //Set ? to the far x end of your farm
-
+UNTIL(XPOS=?)//set ? to the x coordinate of the far end of your farm
 
 DO
 
@@ -37,24 +29,21 @@ LOOK(270,90)
 
 KEY(USE)
 
-UNTIL(XPOS=?)
-
+UNTIL(XPOS=%#x%)
 
 TOGGLEKEY(FORWARD)
 
 KEYDOWN(SHIFT)
 
-SET(#slot,3)
-
+SET(#slot,4)
 
 DO
 
-LOOK(270,60)
+LOOK(270,15)
 
 SLOT(%#slot%)
 
 GetSlotItem(%#slot%,#id,#num)
-
 
 DO(%#num%)
 
@@ -64,27 +53,18 @@ wait(10ms)
 
 LOOP
 
-
 INC(#slot,1)
 
 UNTIL(#slot=9)
 
-SLOT(2)
-
-DO(32)
-KEY(USE)
-LOOP
-
-
 KEYUP(SHIFT)
 
 TOGGLEKEY(FORWARD)
-DEC(#z)
-
+DEC(#counter)
 
 DO
 LOOK(0,0)
-UNTIL(ZPOS=%#z)
+UNTIL(ZPOS=%#counter%)
 
 LOOP
 
@@ -92,11 +72,37 @@ DO
 
 LOOK(180,0)
 
-UNTIL(XPOS=-?) //Set ? to the hopper end of the farm
+UNTIL(ZPOS=%#z%)
 
+DO
+
+LOOK(270,0)
+
+DEC(#x)
+
+UNTIL(XPOS=%#x%)
+
+LOOK(180,0)
+
+WAIT(50t)
 
 TOGGLEKEY(FORWARD)
 
-WAIT(?t) //Replace ? with time to wait for crops to grow (hours*72000)
+PRESS(O) //bind an auto eating script to "O"
 
-LOOP;
+WAIT(921600t)
+
+PRESS(O)
+
+DO
+
+KEYDOWN(FORWARD)
+
+LOOK(0,0)
+
+UNTIL(ZPOS=%#z%)
+
+KEYUP(FORWARD)
+
+LOOP
+
