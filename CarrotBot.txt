@@ -23,7 +23,7 @@ UNTIL(XPOS=?)//set ? to the x coordinate of the far end of your farm
 
 DO
 
-PICK(nether_wart)
+PICK(carrot)
 
 LOOK(270,90)
 
