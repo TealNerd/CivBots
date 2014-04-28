@@ -1,43 +1,108 @@
-//Use with rectangular carrot farm
-//Set up farm with hoppers at one x end in a row leading to a chest
-//Configure inventory with a fortune 3 diamond pick in slot one and a stack of carrots in slot 9 (for a buffer)
-//Make rows no longer than 150 blocks
-
-SET(#rows,?) //set ? to the number of rows of your farm (including empty rows if you have any)
+//Make your farm exactly like the schematic
+//Inventory should be a fort 3 pickaxe in slot one, and baked potatoes and a stick in slots 2 and 3 as well as a stack of potatos in slot 9
+// this script requires you to have poison potatoes somewhere in your inventory as well, to keep them out of the good
 DO
+
+SET(#rows,?) //Set ? to number of rows
+SET(#counter,%ZPOS%)
+SET(#z,%ZPOS%)
+SET(#x,%XPOS%)
+
 TOGGLEKEY(FORWARD)
 DO(%#rows%)
+
 DO
+
 SLOT(1)
+
 LOOK(90,90)
+
 KEY(ATTACK)
-UNTIL(XPOS=?) //Set ? to the far x end of your farm
+
+UNTIL(XPOS=?)//set ? to the x coordinate of the far end of your farm
+
 DO
+
 PICK(potato)
+
 LOOK(270,90)
+
 KEY(USE)
-UNTIL(XPOS=-6448)
+
+UNTIL(XPOS=%#x%)
+
 TOGGLEKEY(FORWARD)
+
 KEYDOWN(SHIFT)
-SET(#slot,2)
+
+SET(#slot,4)
+
 DO
-LOOK(270,60)
+
+LOOK(270,15)
+
 SLOT(%#slot%)
+
 GetSlotItem(%#slot%,#id,#num)
+
 DO(%#num%)
+
 KEY(DROP)
+
 wait(10ms)
+
 LOOP
+
 INC(#slot,1)
+
 UNTIL(#slot=9)
+
 KEYUP(SHIFT)
+
 TOGGLEKEY(FORWARD)
-LOOK(0,0)
-WAIT(4t)
-LOOP
+DEC(#counter)
+
 DO
-LOOK(180,0)
-UNTIL(XPOS=?) //Set ? to the hopper end of the farm
-TOGGLEKEY(FORWARD)
-WAIT(?t) //Replace ? with time to wait for crops to grow (hours*72000)
+LOOK(0,0)
+UNTIL(ZPOS=%#counter%)
+
 LOOP
+
+DO
+
+LOOK(180,0)
+
+UNTIL(ZPOS=%#z%)
+
+DO
+
+LOOK(270,0)
+
+DEC(#x)
+
+UNTIL(XPOS=%#x%)
+
+LOOK(180,0)
+
+WAIT(50t)
+
+TOGGLEKEY(FORWARD)
+
+PRESS(O) //bind an auto eating script to "O"
+
+WAIT(?t)//Change ? to wait time for crops to grow. calculate with hours*72000
+
+PRESS(O)
+
+DO
+
+KEYDOWN(FORWARD)
+
+LOOK(0,0)
+
+UNTIL(ZPOS=%#z%)
+
+KEYUP(FORWARD)
+
+LOOP
+
