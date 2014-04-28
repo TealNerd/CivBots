@@ -90,7 +90,7 @@ TOGGLEKEY(FORWARD)
 
 PRESS(O) //bind an auto eating script to "O"
 
-WAIT(921600t)
+WAIT(?t)//Change ? to wait time for crops to grow. calculate with hours*72000
 
 PRESS(O)
 
