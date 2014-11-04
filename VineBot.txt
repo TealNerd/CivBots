@@ -1,0 +1,48 @@
+
+do
+pick(shears)
+if(%ITEM% != "shears")
+look(0,40,100ms)
+wait(150ms)
+key(use)
+else
+look(0,0,100ms)
+do(10)
+key(attack)
+loop
+endif
+pick(shears)
+if(%ITEM% != "shears")
+look(0,40,100ms)
+wait(150ms)
+key(use)
+else
+look(90,0,100ms)
+do(10)
+key(attack)
+loop
+endif
+pick(shears)
+if(%ITEM% != "shears")
+look(0,40,100ms)
+//for asa <3
+wait(150ms)
+key(use)
+else
+look(180,0,100ms)
+do(10)
+key(attack)
+loop
+endif
+pick(shears)
+if(%ITEM% != "shears")
+look(0,40,100ms)
+wait(150ms)
+key(use)
+else
+look(270,0,100ms)
+do(10)
+key(attack)
+loop
+endif
+loop
